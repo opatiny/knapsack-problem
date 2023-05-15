@@ -1,0 +1,12 @@
+[
+  { "name": "lamp", "weight": 0.25, "score": 8 },
+  { "name": "matches", "weight": 0.05, "score": 10 },
+  { "name": "knife", "weight": 0.1, "score": 10 },
+  { "name": "bottle", "weight": 1, "score": 8 },
+  { "name": "hat", "weight": 0.1, "score": 5 },
+  { "name": "sunscreen", "weight": 0.4, "score": 3 },
+  { "name": "rope", "weight": 0.2, "score": 6 },
+  { "name": "nuts", "weight": 0.25, "score": 6 },
+  { "name": "raincoat", "weight": 0.4, "score": 8 },
+  { "name": "book", "weight": 0.4, "score": 2 }
+]
