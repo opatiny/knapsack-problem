@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/opatiny/knapsack-problem#readme",
   "dependencies": {
+    "fs": "^0.0.1-security",
     "ml-random": "^0.5.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4",
