@@ -1,5 +1,10 @@
 import Random from "ml-random";
 
+export interface ObjectSelection {
+  booleanArray: boolean[];
+  indices: number[];
+}
+
 export interface SelectObjectsOptions {
   seed?: number;
 }
@@ -7,8 +12,9 @@ export interface SelectObjectsOptions {
 export function selectObjects(
   totalNbObjects: number,
   options: SelectObjectsOptions = {}
-): boolean[] {
-  let result: boolean[] = [];
+): ObjectSelection {
+  let booleanArray: boolean[] = [];
+  let indices: number[] = [];
 
   const randomGenerator =
     options.seed !== undefined ? new Random(options.seed) : new Random();
@@ -16,7 +22,9 @@ export function selectObjects(
   const values = [true, false];
 
   for (let i = 0; i < totalNbObjects; i++) {
-    result.push(...randomGenerator.choice(values));
+    const currentValue = randomGenerator.choice(values)[0];
+    booleanArray.push(currentValue);
+    if (currentValue) indices.push(i);
   }
-  return result;
+  return { booleanArray, indices };
 }
