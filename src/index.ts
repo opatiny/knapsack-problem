@@ -16,9 +16,11 @@ export interface Object {
 }
 
 // loading data
-const rawData = readFileSync("./data/backpack.json", "utf-8");
+const rawData = readFileSync(__dirname + "/data/backpack.json", "utf-8");
 const data = JSON.parse(rawData);
 
 const nbObjects = data.length;
 
 console.log(nbObjects);
+
+// compute all

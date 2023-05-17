@@ -1,0 +1,6 @@
+[
+  { "name": "lamp", "weight": 0.25, "score": 8 },
+  { "name": "matches", "weight": 0.05, "score": 10 },
+  { "name": "raincoat", "weight": 0.4, "score": 8 },
+  { "name": "book", "weight": 0.4, "score": 2 }
+]
