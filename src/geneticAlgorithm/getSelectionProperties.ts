@@ -6,16 +6,20 @@ export interface SelectionProperties {
 }
 
 export function getSelectionProperties(
-  selection: number[],
+  selection: boolean[],
   data: Object[]
 ): SelectionProperties {
+  if (selection.length != data.length) {
+    throw new RangeError("Selection array must have same length as data");
+  }
   let totalWeight = 0;
   let totalScore = 0;
 
   for (let i = 0; i < selection.length; i++) {
-    const index = selection[i];
-    totalWeight += data[index].weight;
-    totalScore += data[index].score;
+    if (selection[i]) {
+      totalWeight += data[i].weight;
+      totalScore += data[i].score;
+    }
   }
 
   return { totalScore, totalWeight };

@@ -1,9 +1,7 @@
 import Random from "ml-random";
 
-export interface ObjectSelection {
-  booleanArray: boolean[];
-  indices: number[];
-}
+export type ObjectSelection =  boolean[];
+
 
 export interface SelectObjectsOptions {
   seed?: number;
@@ -14,7 +12,6 @@ export function selectObjects(
   options: SelectObjectsOptions = {}
 ): ObjectSelection {
   let booleanArray: boolean[] = [];
-  let indices: number[] = [];
 
   const randomGenerator =
     options.seed !== undefined ? new Random(options.seed) : new Random();
@@ -24,7 +21,6 @@ export function selectObjects(
   for (let i = 0; i < totalNbObjects; i++) {
     const currentValue = randomGenerator.choice(values)[0];
     booleanArray.push(currentValue);
-    if (currentValue) indices.push(i);
   }
-  return { booleanArray, indices };
+  return booleanArray;
 }

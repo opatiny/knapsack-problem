@@ -42,7 +42,7 @@ export function geneticKnapsack(
   let counter = 0;
   while (selections.length < generationSize) {
     const selection = selectObjects(nbObjects);
-    const properties = getSelectionProperties(selection.indices, data);
+    const properties = getSelectionProperties(selection, data);
     if (properties.totalWeight <= weight) {
       selections.push();
     }
