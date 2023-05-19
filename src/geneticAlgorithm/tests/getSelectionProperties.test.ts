@@ -2,7 +2,7 @@ import { test, expect } from "vitest";
 import { readFileSync } from "fs";
 import { getSelectionProperties } from "../getSelectionProperties";
 
-const rawData = readFileSync(__dirname + "/testData.json", "utf-8");
+const rawData = readFileSync(__dirname + "../data/testData.json", "utf-8");
 const data = JSON.parse(rawData);
 
 test("pick two objects", () => {
