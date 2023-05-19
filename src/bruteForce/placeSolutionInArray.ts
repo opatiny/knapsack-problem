@@ -4,19 +4,21 @@ export function placeSolutionInArray(
   solutionArray: Solution[],
   solution: Solution,
   maxLength: number
-): Solution[] {
-  for (let i = solutionArray.length - 1; i >= 0; i--) {
+): void {
+  for (let i = 0; i < solutionArray.length; i++) {
     if (
       solution.properties.totalScore > solutionArray[i].properties.totalScore
     ) {
       solutionArray.splice(i, 0, solution);
-      continue;
+      if (solutionArray.length > maxLength) {
+        solutionArray.length = maxLength;
+      }
+      return;
     }
   }
 
-  if (solutionArray.length <= maxLength) {
-    return solutionArray;
-  } else {
-    return solutionArray.slice(0, maxLength - 1);
+  if (solutionArray.length < maxLength - 1) {
+    solutionArray.push(solution);
+    return;
   }
 }
