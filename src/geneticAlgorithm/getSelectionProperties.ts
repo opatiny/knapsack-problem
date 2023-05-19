@@ -1,4 +1,4 @@
-import { Object } from ".";
+import { Object } from "..";
 
 export interface SelectionProperties {
   totalWeight: number;

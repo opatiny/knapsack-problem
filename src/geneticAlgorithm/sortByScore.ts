@@ -1,4 +1,4 @@
-import { Solution } from "./knapsack";
+import { Solution } from "./geneticKnapsack";
 
 export function sortByScore(solutions: Solution[]): Solution[] {
   const copy = solutions.slice();

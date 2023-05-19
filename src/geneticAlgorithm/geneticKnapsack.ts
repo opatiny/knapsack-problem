@@ -3,7 +3,7 @@ import {
   getSelectionProperties,
 } from "./getSelectionProperties";
 import { ObjectSelection, selectObjects } from "./selectObjects";
-import { Object } from ".";
+import { Object } from "..";
 
 export interface KnapsackOptions {
   /**
@@ -25,7 +25,7 @@ export interface Solution {
   properties: SelectionProperties;
 }
 
-export function knapsack(
+export function geneticKnapsack(
   data: Object[],
   weight: number,
   options: KnapsackOptions = {}

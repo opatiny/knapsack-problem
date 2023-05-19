@@ -1,5 +1,4 @@
 import { test, expect } from "vitest";
-import { selectObjects } from "../selectObjects";
 import { readFileSync } from "fs";
 import { getSelectionProperties } from "../getSelectionProperties";
 
