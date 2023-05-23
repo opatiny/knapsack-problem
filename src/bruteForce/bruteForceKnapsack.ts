@@ -41,4 +41,6 @@ export function bruteForceKnapsack(
       );
     }
   }
+
+  return solutions;
 }

@@ -1,4 +1,5 @@
 import { readFileSync } from "fs";
+import { bruteForceKnapsack } from "./bruteForce/bruteForceKnapsack";
 
 export interface Object {
   /**
@@ -21,6 +22,15 @@ const data = JSON.parse(rawData);
 
 const nbObjects = data.length;
 
-console.log(nbObjects);
+console.log("Number or objects to pick from: " + nbObjects);
 
-// compute all
+// define variables
+const bagWeight = 3; // [kg]
+const nbBestSolutions = 5;
+
+// find the best solution(s) using brute force approach
+
+const solutions = bruteForceKnapsack(data, bagWeight, { nbBestSolutions });
+
+console.log("\n Brute force solutions");
+console.table(solutions);
