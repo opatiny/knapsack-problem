@@ -70,3 +70,42 @@ test("maxLength reached", () => {
     },
   ]);
 });
+
+test("array with length of 1", () => {
+  solutionArray = [
+    {
+      selection: [false, false, true, false],
+      properties: { totalScore: 20, totalWeight: 1 },
+    },
+  ];
+
+  const solution = {
+    selection: [false, false, true, false],
+    properties: { totalScore: 40, totalWeight: 1 },
+  };
+
+  placeSolutionInArray(solutionArray, solution, 1);
+  expect(solutionArray).toStrictEqual([
+    {
+      selection: [false, false, true, false],
+      properties: { totalScore: 40, totalWeight: 1 },
+    },
+  ]);
+});
+
+test("initially empty array", () => {
+  solutionArray = [];
+
+  const solution = {
+    selection: [false, false, true, false],
+    properties: { totalScore: 40, totalWeight: 1 },
+  };
+
+  placeSolutionInArray(solutionArray, solution, 1);
+  expect(solutionArray).toStrictEqual([
+    {
+      selection: [false, false, true, false],
+      properties: { totalScore: 40, totalWeight: 1 },
+    },
+  ]);
+});

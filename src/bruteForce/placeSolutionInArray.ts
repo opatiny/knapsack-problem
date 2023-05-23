@@ -5,6 +5,9 @@ export function placeSolutionInArray(
   solution: Solution,
   maxLength: number
 ): void {
+  if (solutionArray.length === 0) {
+    solutionArray.push(solution);
+  }
   for (let i = 0; i < solutionArray.length; i++) {
     if (
       solution.properties.totalScore > solutionArray[i].properties.totalScore
