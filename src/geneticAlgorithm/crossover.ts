@@ -4,7 +4,8 @@ import Random from "ml-random";
 export interface CrossoverOptions {
   /**
    * Seed the random generator?
-   * @default false
+   *
+   * @default undefined
    */
   seed?: number;
   /**
@@ -13,6 +14,13 @@ export interface CrossoverOptions {
    * @default 1
    */
   minCrossoverLength?: number;
+
+  /**
+   * Specify a desired index for the crossover.
+   *
+   * @default undefined
+   */
+  crossoverIndex?: number;
 }
 
 export function crossover(
@@ -20,12 +28,24 @@ export function crossover(
   selection2: ObjectSelection,
   options: CrossoverOptions = {}
 ): ObjectSelection[] {
-  const { seed, minCrossoverLength = 1 } = options;
+  const { crossoverIndex, seed, minCrossoverLength = 1 } = options;
 
-  const randomGenerator = seed !== undefined ? new Random(seed) : new Random();
+  let crossIndex: number;
+  if (crossoverIndex !== undefined) {
+    crossIndex = crossoverIndex;
+  } else {
+    const randomGenerator =
+      seed !== undefined ? new Random(seed) : new Random();
 
-  const crossIndex = randomGenerator.randInt(
-    minCrossoverLength,
-    selection1.length - (minCrossoverLength + 1)
-  );
+    crossIndex = randomGenerator.randInt(
+      minCrossoverLength,
+      selection1.length - (minCrossoverLength + 1)
+    );
+  }
+
+  const start1 = selection1.slice(0, crossIndex);
+  const start2 = selection2.slice(0, crossIndex);
+  const end1 = selection1.slice(crossIndex);
+  const end2 = selection2.slice(crossIndex);
+  return [start1.concat(end2), start2.concat(end1)];
 }
