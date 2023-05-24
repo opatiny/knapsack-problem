@@ -23,6 +23,15 @@ export interface CrossoverOptions {
   crossoverIndex?: number;
 }
 
+/**
+ * Takes two object selections and switches the end of the arrays.
+ * The length of the crossover is computed randomly, but is at least 1,
+ * except if specified otherwise in the options.
+ * @param selection1 - First object selection.
+ * @param selection2 - Second object selection.
+ * @param options Crossover options.
+ * @returns The crossed over object selections.
+ */
 export function crossover(
   selection1: ObjectSelection,
   selection2: ObjectSelection,

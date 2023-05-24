@@ -1,10 +1,22 @@
 import { Object } from "..";
 
 export interface SelectionProperties {
+  /**
+   * Total weight in kg.
+   */
   totalWeight: number;
+  /**
+   * Sum of all the selected objects scores.
+   */
   totalScore: number;
 }
 
+/**
+ * Compute weight and score of a selection.
+ * @param selection The selected objects.
+ * @param data The objects data.
+ * @returns The selection stats.
+ */
 export function getSelectionProperties(
   selection: boolean[],
   data: Object[]
