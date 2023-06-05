@@ -2,7 +2,7 @@ import { test, expect } from "vitest";
 import { ObjectSelection } from "../selectObjects";
 import { crossover } from "../crossover";
 
-test("crossoverIndex = 2", () => {
+test("crossoverIndex = 1", () => {
   const selection1: ObjectSelection = [true, true, true, true];
   const selection2: ObjectSelection = [false, false, false, false];
   expect(
