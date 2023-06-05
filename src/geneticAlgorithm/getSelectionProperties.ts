@@ -4,11 +4,11 @@ export interface SelectionProperties {
   /**
    * Total weight in kg.
    */
-  totalWeight: number;
+  weight: number;
   /**
    * Sum of all the selected objects scores.
    */
-  totalScore: number;
+  score: number;
 }
 
 /**
@@ -24,15 +24,15 @@ export function getSelectionProperties(
   if (selection.length != data.length) {
     throw new RangeError("Selection array must have same length as data");
   }
-  let totalWeight = 0;
-  let totalScore = 0;
+  let weight = 0;
+  let score = 0;
 
   for (let i = 0; i < selection.length; i++) {
     if (selection[i]) {
-      totalWeight += data[i].weight;
-      totalScore += data[i].score;
+      weight += data[i].weight;
+      score += data[i].score;
     }
   }
 
-  return { totalScore, totalWeight };
+  return { score, weight };
 }

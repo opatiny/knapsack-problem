@@ -2,7 +2,7 @@ import { Solution } from "../geneticAlgorithm/geneticKnapsack";
 import { getSelectionProperties } from "../geneticAlgorithm/getSelectionProperties";
 import { ObjectSelection } from "../geneticAlgorithm/selectObjects";
 import { Object } from "..";
-import { placeSolutionInArray } from "./placeSolutionInArray";
+import { placeSolutionInArray } from "../utils/placeSolutionInArray";
 
 export interface BruteForceKnapsackOptions {
   /**
@@ -33,7 +33,7 @@ export function bruteForceKnapsack(
     }
 
     const properties = getSelectionProperties(currentSelection, data);
-    if (properties.totalWeight <= weight) {
+    if (properties.weight <= weight) {
       placeSolutionInArray(
         solutions,
         { selection: currentSelection, properties },
