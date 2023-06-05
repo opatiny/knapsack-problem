@@ -9,9 +9,7 @@ export function placeSolutionInArray(
     solutionArray.push(solution);
   }
   for (let i = 0; i < solutionArray.length; i++) {
-    if (
-      solution.properties.totalScore > solutionArray[i].properties.totalScore
-    ) {
+    if (solution.properties.score > solutionArray[i].properties.score) {
       solutionArray.splice(i, 0, solution);
       if (solutionArray.length > maxLength) {
         solutionArray.length = maxLength;
