@@ -14,7 +14,7 @@ export function crossoverAll(
 
   const randomGenerator = seed !== undefined ? new Random(seed) : new Random();
 
-  const indices = randomGenerator.choice(nbSelections - 1, {
+  const indices = randomGenerator.choice(nbSelections, {
     size: nbSelections,
   });
 

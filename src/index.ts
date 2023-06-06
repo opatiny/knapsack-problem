@@ -36,7 +36,6 @@ const bfSolutions = bruteForceKnapsack(data, bagWeight, { nbBestSolutions });
 console.log("\n Brute force solutions");
 console.table(bfSolutions);
 
-console.log("Computing best solution with genetic algorithm...");
 const geneticSolution = geneticKnapsack(data, bagWeight);
 
 console.log("\n Genetic algorithm solution");

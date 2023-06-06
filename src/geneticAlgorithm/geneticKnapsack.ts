@@ -66,8 +66,7 @@ export function geneticKnapsack(
     const selection = selectObjects(nbObjects);
     const properties = getSelectionProperties(selection, data);
     if (properties.weight <= weight) {
-      console.log("weight ok!");
-      selections.push();
+      selections.push(selection);
     }
   }
   counter++;
@@ -77,7 +76,6 @@ export function geneticKnapsack(
     );
   }
 
-  console.log(selections);
   let bestSelections: ObjectSelection[] = selections;
   let bestSolutions: Solution[] = [];
 
@@ -87,12 +85,12 @@ export function geneticKnapsack(
 
     for (let j = 0; j < nbCrossovers; j++) {
       crossovers.push(...crossoverAll(bestSelections, { seed }));
-      for (let selection of crossovers) {
-        const properties = getSelectionProperties(selection, data);
-        const solution: Solution = { selection, properties };
-        if (properties.weight <= weight) {
-          placeSolutionInArray(bestSolutions, solution, generationSubsetSize);
-        }
+    }
+    for (let selection of crossovers) {
+      const properties = getSelectionProperties(selection, data);
+      const solution: Solution = { selection, properties };
+      if (properties.weight <= weight) {
+        placeSolutionInArray(bestSolutions, solution, generationSubsetSize);
       }
 
       bestSelections = bestSolutions.map((solution) => solution.selection);
