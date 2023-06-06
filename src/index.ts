@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import { bruteForceKnapsack } from "./bruteForce/bruteForceKnapsack";
+import { geneticKnapsack } from "./geneticAlgorithm/geneticKnapsack";
 
 export interface Object {
   /**
@@ -30,7 +31,13 @@ const nbBestSolutions = 5;
 
 // find the best solution(s) using brute force approach
 
-const solutions = bruteForceKnapsack(data, bagWeight, { nbBestSolutions });
+const bfSolutions = bruteForceKnapsack(data, bagWeight, { nbBestSolutions });
 
 console.log("\n Brute force solutions");
-console.table(solutions);
+console.table(bfSolutions);
+
+console.log("Computing best solution with genetic algorithm...");
+const geneticSolution = geneticKnapsack(data, bagWeight);
+
+console.log("\n Genetic algorithm solution");
+console.table(geneticSolution);

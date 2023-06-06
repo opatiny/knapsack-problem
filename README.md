@@ -11,5 +11,5 @@ Simple genetic algorithm to approximate best solution of Knapsack problem.
 
 Useful tool to run a ts script in watch mode: `nodemon`.
 
-- Install nodemon globally: `npm i -g nodemon`
+- Install `nodemon` globally: `npm i -g nodemon`
 - Run you script: `nodemon src/index.ts`

@@ -1,8 +1,8 @@
 import Random from "ml-random";
 import { ObjectSelection } from "./selectObjects";
+import { RandomOptions } from "./geneticKnapsack";
 
-export interface MutateOptions {
-  seed?: number;
+export interface MutateOptions extends RandomOptions {
   /**
    * Specify a desired index for the mutation.
    *

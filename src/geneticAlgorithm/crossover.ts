@@ -1,20 +1,14 @@
+import { RandomOptions } from "./geneticKnapsack";
 import { ObjectSelection } from "./selectObjects";
 import Random from "ml-random";
 
-export interface CrossoverOptions {
-  /**
-   * Seed the random generator?
-   *
-   * @default undefined
-   */
-  seed?: number;
+export interface CrossoverOptions extends RandomOptions {
   /**
    * Minimum number of elements that have to be exchanged between the two selections.
    *
    * @default 1
    */
   minCrossoverLength?: number;
-
   /**
    * Specify a desired index for the crossover.
    *
