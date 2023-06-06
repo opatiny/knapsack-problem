@@ -1,4 +1,4 @@
-import { Object } from "..";
+import { BagItem } from "..";
 
 export interface SelectionProperties {
   /**
@@ -19,7 +19,7 @@ export interface SelectionProperties {
  */
 export function getSelectionProperties(
   selection: boolean[],
-  data: Object[]
+  data: BagItem[]
 ): SelectionProperties {
   if (selection.length != data.length) {
     throw new RangeError("Selection array must have same length as data");

@@ -3,7 +3,7 @@ import {
   getSelectionProperties,
 } from "./getSelectionProperties";
 import { ObjectSelection, selectObjects } from "./selectObjects";
-import { Object } from "..";
+import { BagItem } from "..";
 import { crossoverAll } from "./crossoverAll";
 import { sortByScore } from "./sortByScore";
 import { placeSolutionInArray } from "../utils/placeSolutionInArray";
@@ -46,7 +46,7 @@ export interface Solution {
 }
 
 export function geneticKnapsack(
-  data: Object[],
+  data: BagItem[],
   weight: number,
   options: KnapsackOptions = {}
 ): Solution {

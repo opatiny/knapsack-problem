@@ -1,7 +1,7 @@
 import { Solution } from "../geneticAlgorithm/geneticKnapsack";
 import { getSelectionProperties } from "../geneticAlgorithm/getSelectionProperties";
 import { ObjectSelection } from "../geneticAlgorithm/selectObjects";
-import { Object } from "..";
+import { BagItem } from "..";
 import { placeSolutionInArray } from "../utils/placeSolutionInArray";
 
 export interface BruteForceKnapsackOptions {
@@ -12,7 +12,7 @@ export interface BruteForceKnapsackOptions {
 }
 
 export function bruteForceKnapsack(
-  data: Object[],
+  data: BagItem[],
   weight: number,
   options: BruteForceKnapsackOptions = {}
 ): Solution[] {
