@@ -19,6 +19,9 @@ export interface BagItem {
 
 // loading data
 const rawData = readFileSync(__dirname + "/data/items10.json", "utf-8");
+
+console.log(rawData);
+
 const data = JSON.parse(rawData);
 
 const nbObjects = data.length;
