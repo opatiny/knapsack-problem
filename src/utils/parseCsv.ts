@@ -17,23 +17,30 @@ export function parseCsv(
 ): BagItem[] {
   const { separator = "," } = options;
 
-  let result: BagItem[] = [];
+  let entries: BagItem[] = [];
 
-  const rows = rawData.split("\n");
-  const headers = rows.shift();
-  for (let row of rows) {
-    const values = row.split(separator);
+  // end of next line: ignore empty lines
+  const rows = rawData.split(/\r?\n/).filter((line) => !line.match(/^\s*$/));
+
+  const firstLine = rows.shift();
+  let headers;
+  if (!firstLine) {
+    throw new Error("File is empty");
+  } else {
+    headers = firstLine.split(separator);
+  }
+
+  for (let i = 0; i < rows.length; i++) {
+    const values = rows[i].split(separator);
     const name = values[0];
     const weight = Number(values[1]);
     const score = Number(values[2]);
 
-    console.log({ name, weight, score });
-
     if (!(name && weight && score)) {
-      throw new Error("invalid data format");
+      throw new Error(`invalid data format on line ${i + 1}`);
     }
-    result.push({ name, weight, score });
+    entries.push({ name, weight, score });
   }
 
-  return result;
+  return entries;
 }
