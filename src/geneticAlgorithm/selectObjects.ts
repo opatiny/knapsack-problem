@@ -1,14 +1,7 @@
 import Random from "ml-random";
+import { RandomOptions } from "./geneticKnapsack";
 
 export type ObjectSelection = boolean[];
-
-export interface SelectObjectsOptions {
-  /**
-   * Seed for the random generator. No seed by default.
-   * @default undefined
-   */
-  seed?: number;
-}
 
 /**
  * Randomly select some indices that correspond to the position of the objects in the data.
@@ -18,7 +11,7 @@ export interface SelectObjectsOptions {
  */
 export function selectObjects(
   totalNbObjects: number,
-  options: SelectObjectsOptions = {}
+  options: RandomOptions = {}
 ): ObjectSelection {
   let booleanArray: boolean[] = [];
 

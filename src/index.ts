@@ -20,24 +20,24 @@ export interface BagItem {
 }
 
 // loading data
-const rawData = readFileSync(__dirname + "/data/items20.csv", "utf-8");
+const rawData = readFileSync(__dirname + "/data/items50.csv", "utf-8");
 
 const data = parseCsv(rawData);
 
 const nbObjects = data.length;
 
 // define variables
-const bagWeight = 1; // [kg]
+const bagWeight = 2; // [kg]
 
 console.log(`Maximum bag weight: ${bagWeight} kg`);
 console.log(`Number of objects to pick from: ${nbObjects}`);
 
 // find the best solution(s) using brute force approach
 
-const bfSolutions = bruteForceKnapsack(data, bagWeight, { nbBestSolutions: 5 });
-
-console.log("\n Brute force solutions");
-console.table(bfSolutions, ["properties"]);
+// const bfSolutions = bruteForceKnapsack(data, bagWeight, { nbBestSolutions: 5 });
+//
+// console.log("\n Brute force solutions");
+// console.table(bfSolutions, ["properties"]);
 
 // apply genetic algorithm
 const geneticSolution = geneticKnapsack(data, bagWeight, {
@@ -48,5 +48,5 @@ const geneticSolution = geneticKnapsack(data, bagWeight, {
 console.log("\n Genetic algorithm solution");
 console.table(geneticSolution, ["score", "weight"]);
 
-console.log("Items to take with:");
+console.log("\n Items to take with:");
 printFinalItemsNames(data, geneticSolution.selection);

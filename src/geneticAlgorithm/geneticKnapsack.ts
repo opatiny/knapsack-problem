@@ -7,10 +7,11 @@ import { BagItem } from "..";
 import { crossoverAll } from "./crossoverAll";
 import { sortByScore } from "./sortByScore";
 import { placeSolutionInArray } from "../utils/placeSolutionInArray";
+import { getSuitableSelection } from "./getSuitableSelection";
 
 export interface RandomOptions {
   /**
-   * Seed the random generator?
+   * Seed for the random generator. No seed by default.
    *
    * @default undefined
    */
@@ -18,10 +19,6 @@ export interface RandomOptions {
 }
 
 export interface KnapsackOptions extends RandomOptions {
-  /**
-   * @default 1000
-   */
-  maxInitialIterations?: number;
   /**
    * @default 100
    */
@@ -45,6 +42,14 @@ export interface Solution {
   properties: SelectionProperties;
 }
 
+/**
+ * Find a good solution to the knapsack problem for a bag of a given weight.
+ *
+ * @param data The data with all the items to pick from.
+ * @param weight - Maximal weight of the backpack.
+ * @param options - Genetic Knapsack options.
+ * @returns Genetic solution.
+ */
 export function geneticKnapsack(
   data: BagItem[],
   weight: number,
@@ -55,25 +60,16 @@ export function geneticKnapsack(
     generationSize = 100,
     generationSubsetSize = 10,
     nbIterations = 5,
-    maxInitialIterations = 10,
   } = options;
 
   const nbObjects = data.length;
 
   let selections: ObjectSelection[] = [];
   let counter = 0;
-  while (selections.length < generationSubsetSize) {
-    const selection = selectObjects(nbObjects);
+  for (let i = 0; i < generationSubsetSize; i++) {
+    const selection = getSuitableSelection(data, weight, { seed });
     const properties = getSelectionProperties(selection, data);
-    if (properties.weight <= weight) {
-      selections.push(selection);
-    }
-  }
-  counter++;
-  if (counter > maxInitialIterations) {
-    throw new Error(
-      "Could not find enough initial selections with appropriate weight"
-    );
+    selections.push(selection);
   }
 
   let bestSelections: ObjectSelection[] = selections;
