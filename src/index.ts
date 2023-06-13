@@ -1,6 +1,8 @@
 import { readFileSync } from "fs";
 import { bruteForceKnapsack } from "./bruteForce/bruteForceKnapsack";
 import { geneticKnapsack } from "./geneticAlgorithm/geneticKnapsack";
+import { printFinalItemsNames } from "./utils/printFinalItemsNames";
+import { parseCsv } from "./utils/parseCsv";
 
 export interface BagItem {
   /**
@@ -18,18 +20,16 @@ export interface BagItem {
 }
 
 // loading data
-const rawData = readFileSync(__dirname + "/data/items10.json", "utf-8");
+const rawData = readFileSync(__dirname + "/data/items20.csv", "utf-8");
 
-console.log(rawData);
-
-const data = JSON.parse(rawData);
+const data = parseCsv(rawData);
 
 const nbObjects = data.length;
 
 // define variables
 const bagWeight = 1; // [kg]
 
-console.log(`Maximum bag weight: ${bagWeight}`);
+console.log(`Maximum bag weight: ${bagWeight} kg`);
 console.log(`Number of objects to pick from: ${nbObjects}`);
 
 // find the best solution(s) using brute force approach
@@ -37,7 +37,7 @@ console.log(`Number of objects to pick from: ${nbObjects}`);
 const bfSolutions = bruteForceKnapsack(data, bagWeight, { nbBestSolutions: 5 });
 
 console.log("\n Brute force solutions");
-console.table(bfSolutions);
+console.table(bfSolutions, ["properties"]);
 
 // apply genetic algorithm
 const geneticSolution = geneticKnapsack(data, bagWeight, {
@@ -46,4 +46,7 @@ const geneticSolution = geneticKnapsack(data, bagWeight, {
 });
 
 console.log("\n Genetic algorithm solution");
-console.table(geneticSolution);
+console.table(geneticSolution, ["score", "weight"]);
+
+console.log("Items to take with:");
+printFinalItemsNames(data, geneticSolution.selection);

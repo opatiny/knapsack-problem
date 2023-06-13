@@ -1,0 +1,23 @@
+name, weight, score
+
+notebook, 0.3, 3
+lamp, 0.25, 8
+matches, 0.05, 10
+knife, 0.1, 10
+bottle, 1, 8
+hat, 0.1, 5
+sunscreen, 0.4, 3
+rope, 0.2, 6
+nuts, 0.25, 6
+raincoat, 0.4, 8
+
+book, 0.4, 2
+socks, 0.05, 3
+sleeping bag, 0.5, 8
+tent, 1.5, 7
+isobetadine, 0.1, 10
+toilet paper, 0.2, 3
+phone, 0.1, 2
+cooking pan, 0.3, 4
+pen, 0.02, 3
+battery pack, 0.3, 3
