@@ -1,0 +1,12 @@
+name, weight, score
+
+notebook, 0.3, 3
+lamp, 0.25, 8
+matches, 0.05, 10
+knife, 0.1, 10
+bottle, 1, 8
+hat, 0.1, 5
+sunscreen, 0.4, 3
+rope, 0.2, 6
+nuts, 0.25, 6
+raincoat, 0.4, 8
