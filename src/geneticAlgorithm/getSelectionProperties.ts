@@ -1,4 +1,4 @@
-import { BagItem } from "..";
+import { BagItem } from "./geneticKnapsack";
 
 export interface SelectionProperties {
   /**

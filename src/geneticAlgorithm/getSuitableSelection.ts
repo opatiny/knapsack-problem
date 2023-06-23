@@ -1,6 +1,5 @@
 import Random from "ml-random";
-import { BagItem } from "..";
-import { RandomOptions } from "./geneticKnapsack";
+import { BagItem, RandomOptions } from "./geneticKnapsack";
 import { getSelectionProperties } from "./getSelectionProperties";
 import { ObjectSelection, selectObjects } from "./selectObjects";
 

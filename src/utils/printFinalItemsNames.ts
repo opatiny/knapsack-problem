@@ -1,4 +1,4 @@
-import { BagItem } from "..";
+import { BagItem } from "../geneticAlgorithm/geneticKnapsack";
 import { ObjectSelection } from "../geneticAlgorithm/selectObjects";
 
 export function printFinalItemsNames(

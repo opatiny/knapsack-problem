@@ -1,4 +1,4 @@
-import { BagItem } from "..";
+import { BagItem } from "../geneticAlgorithm/geneticKnapsack";
 
 export interface ParseCsvOptions {
   /**
