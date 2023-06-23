@@ -1,7 +1,6 @@
-import { Solution } from "../geneticAlgorithm/geneticKnapsack";
+import { BagItem, Solution } from "../geneticAlgorithm/geneticKnapsack";
 import { getSelectionProperties } from "../geneticAlgorithm/getSelectionProperties";
 import { ObjectSelection } from "../geneticAlgorithm/selectObjects";
-import { BagItem } from "..";
 import { placeSolutionInArray } from "../utils/placeSolutionInArray";
 
 export interface BruteForceKnapsackOptions {

@@ -3,24 +3,25 @@ import { bruteForceKnapsack } from "./bruteForce/bruteForceKnapsack";
 import { geneticKnapsack } from "./geneticAlgorithm/geneticKnapsack";
 import { printFinalItemsNames } from "./utils/printFinalItemsNames";
 import { parseCsv } from "./utils/parseCsv";
+import { join } from "node:path";
+import { parseArgs } from "node:util";
 
-export interface BagItem {
-  /**
-   * Object name.
-   */
-  name: string;
-  /**
-   * Score from 1 to 10.
-   */
-  score: number;
-  /**
-   * Weight of the object in kg.
-   */
-  weight: number;
-}
+// handle command line arguments
+const args = parseArgs({
+  options: {
+    fileName: { type: "string", default: "items10.csv", short: "f" },
+    bruteForce: { type: "boolean", default: true },
+    debug: { type: "boolean", default: false },
+    help: { type: "boolean", short: "h", default: false },
+  },
+});
+
+const fileName = args.values.fileName as string;
+const bruteForce = args.values.bruteForce as boolean;
+const debug = args.values.debug as boolean;
 
 // loading data
-const rawData = readFileSync(__dirname + "/data/items50.csv", "utf-8");
+const rawData = readFileSync(join(__dirname, "data", fileName), "utf-8");
 
 const data = parseCsv(rawData);
 
@@ -33,16 +34,20 @@ console.log(`Maximum bag weight: ${bagWeight} kg`);
 console.log(`Number of objects to pick from: ${nbObjects}`);
 
 // find the best solution(s) using brute force approach
+if (bruteForce) {
+  const bfSolutions = bruteForceKnapsack(data, bagWeight, {
+    nbBestSolutions: 5,
+  });
 
-// const bfSolutions = bruteForceKnapsack(data, bagWeight, { nbBestSolutions: 5 });
-//
-// console.log("\n Brute force solutions");
-// console.table(bfSolutions, ["properties"]);
+  console.log("\n Brute force solutions");
+  console.table(bfSolutions, ["properties"]);
+}
 
 // apply genetic algorithm
 const geneticSolution = geneticKnapsack(data, bagWeight, {
-  generationSize: 200,
+  generationSize: 500,
   generationSubsetSize: 20,
+  debug,
 });
 
 console.log("\n Genetic algorithm solution");
